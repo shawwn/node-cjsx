@@ -1,19 +1,22 @@
 var fs          = require('fs');
-var coffee      = require('coffee-script');
-var cjsx        = require('coffee-react-transform');
 var transformed = false;
+
+function transpile(src) {
+  var dax = require('dax').create();
+  return dax.compile(dax.expand(['do', ...dax.reader['read-all'](dax.reader.stream(src))]))
+}
 
 function transform() {
   if (transformed) {
     return;
   }
 
-  require.extensions['.coffee'] = require.extensions['.cjsx'] = function(module, filename) {
+  require.extensions['.dax'] = function(module, filename) {
     var src = fs.readFileSync(filename, {encoding: 'utf8'});
     try {
-      src = coffee.compile(cjsx(src), { 'bare': true });
+      src = transpile(src);
     } catch (e) {
-      throw new Error('Error transforming ' + filename + ' from CJSX: ' + e.toString());
+      throw new Error('Error transforming ' + filename + ' from dax: ' + e.toString());
     }
     module._compile(src, filename);
   };

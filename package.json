@@ -1,35 +1,31 @@
 {
-  "name": "node-cjsx",
-  "version": "2.0.0",
-  "description": "Transparently require() cjsx from node",
+  "name": "node-dax",
+  "version": "0.0.0",
+  "description": "Transparently require() dax from node",
   "main": "index.js",
   "dependencies": {
-    "coffee-react-transform": "^4.0.0",
-    "coffee-script": "^1.9.1"
+    "dax": "^0.1.14"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:SimonDegraeve/node-cjsx.git"
+    "url": "git@github.com:shawwn/node-dax.git"
   },
-  "homepage": "https://github.com/SimonDegraeve/node-cjsx",
-  "bugs": "https://github.com/SimonDegraeve/node-cjsx/issues",
+  "homepage": "https://github.com/shawwn/node-dax",
+  "bugs": "https://github.com/shawwn/node-dax/issues",
   "keywords": [
-    "react",
-    "coffee-react",
-    "coffee-script",
+    "dax",
     "node",
-    "jsx",
-    "cjsx"
+    "lisp"
   ],
   "contributors": [
     {
-      "name": "Simon Degraeve",
-      "email": "simon.degraeve@gmail.com",
-      "url": "https://github.com/SimonDegraeve"
+      "name": "Shawn Presser",
+      "email": "shawnpresser@gmail.com",
+      "url": "https://github.com/shawwn"
     }
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node -r ./register -r ./test -e 1"
   },
   "license": "MIT"
 }
