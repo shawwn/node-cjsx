@@ -1,29 +1,35 @@
-var fs          = require('fs');
-var transformed = false;
+'use strict';
 
-function transpile(src) {
+var fs          = require('fs');
+var registered = false;
+
+function transform({module, filename, src}) {
   var dax = require('dax').create();
-  return dax.compile(dax.expand(['do', ...dax.reader['read-all'](dax.reader.stream(src))]))
+  var code = dax.compile(dax.expand(['do', ...dax.reader['read-all'](dax.reader.stream(src))]));
+  if (module) {
+    module._compile(code, filename);
+  }
+  return code;
 }
 
-function transform() {
-  if (transformed) {
+function register() {
+  if (registered) {
     return;
   }
 
   require.extensions['.dax'] = function(module, filename) {
     var src = fs.readFileSync(filename, {encoding: 'utf8'});
     try {
-      src = transpile(src);
+      src = transform({module, filename, src});
     } catch (e) {
-      throw new Error('Error transforming ' + filename + ' from dax: ' + e.toString());
+      throw new Error('Error registering ' + filename + ' from dax: ' + e.toString());
     }
-    module._compile(src, filename);
   };
 
-  transformed = true;
+  registered = true;
 }
 
 module.exports = {
-  transform: transform
+  transform,
+  register,
 };
