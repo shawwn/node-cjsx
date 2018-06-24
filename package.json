@@ -1,5 +1,5 @@
 {
-  "name": "node-dax",
+  "name": "require-dax",
   "version": "0.0.1",
   "description": "Transparently require() dax from node",
   "main": "index.js",
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:shawwn/node-dax.git"
+    "url": "git@github.com:shawwn/require-dax.git"
   },
-  "homepage": "https://github.com/shawwn/node-dax",
-  "bugs": "https://github.com/shawwn/node-dax/issues",
+  "homepage": "https://github.com/shawwn/require-dax",
+  "bugs": "https://github.com/shawwn/require-dax/issues",
   "keywords": [
     "dax",
     "node",
