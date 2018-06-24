@@ -1,6 +1,6 @@
 {
   "name": "require-dax",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Transparently require() dax from node",
   "main": "index.js",
   "dependencies": {
