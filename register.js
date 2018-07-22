@@ -1,1 +1,1 @@
-require('./index').transform();
+require('./index').register();
